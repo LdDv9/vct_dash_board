@@ -46,16 +46,11 @@ class UserList extends Component {
             <table className='table  table-hover '>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Email</th>
-                        <th>Loan</th>
-                        <th>CMND</th>
-                        <th>Company</th>
-                        <th>Type of Loan</th>
+                        <th>Guest Info</th>
+                        <th>Loan Info</th>
                         <th>Note</th>
-                        <th>Created At</th>
+                        <th>Status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>

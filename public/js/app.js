@@ -28623,42 +28623,12 @@ var UserList = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                   'th',
                   null,
-                  'ID'
+                  'Guest Info'
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                   'th',
                   null,
-                  'Name'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  'th',
-                  null,
-                  'Phone'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  'th',
-                  null,
-                  'Email'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  'th',
-                  null,
-                  'Loan'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  'th',
-                  null,
-                  'CMND'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  'th',
-                  null,
-                  'Company'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  'th',
-                  null,
-                  'Type of Loan'
+                  'Loan Info'
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                   'th',
@@ -28668,7 +28638,12 @@ var UserList = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                   'th',
                   null,
-                  'Created At'
+                  'Status'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'th',
+                  null,
+                  'Action'
                 )
               )
             ),
@@ -28697,6 +28672,7 @@ var UserList = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(58);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28706,6 +28682,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 // resources/assets/js/components/UserRow.js
+
 
 
 
@@ -28760,53 +28737,133 @@ var UserRow = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'td',
                     null,
-                    this.props.obj.id
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'b',
+                        null,
+                        'ID'
+                    ),
+                    ': ',
+                    this.props.obj.id,
+                    ' ',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'b',
+                        null,
+                        'Name'
+                    ),
+                    ': ',
+                    this.props.obj.name,
+                    ' ',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'b',
+                        null,
+                        'Phone'
+                    ),
+                    ':  ',
+                    this.props.obj.phone,
+                    ' ',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'b',
+                        null,
+                        'Email'
+                    ),
+                    ':  ',
+                    this.props.obj.email,
+                    ' ',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'b',
+                        null,
+                        'ID Card'
+                    ),
+                    ':  ',
+                    this.props.obj.cmnd,
+                    ' ',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null)
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'td',
                     null,
-                    this.props.obj.name
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'td',
-                    null,
-                    this.props.obj.phone
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'td',
-                    null,
-                    this.props.obj.email
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'td',
-                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'b',
+                        null,
+                        'Loan'
+                    ),
+                    ': ',
                     this.formatNumber(this.props.obj.money, '.', ','),
-                    ' VN\u0110'
+                    ' VN\u0110 ',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'b',
+                        null,
+                        'Type Of Loan '
+                    ),
+                    ' : ',
+                    this.props.obj.type,
+                    ' ',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'b',
+                        null,
+                        'More Info '
+                    ),
+                    ' : ',
+                    this.props.obj.more,
+                    ' ',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'b',
+                        null,
+                        'Company'
+                    ),
+                    ': ',
+                    this.props.obj.company,
+                    ' ',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'b',
+                        null,
+                        'Created At'
+                    ),
+                    ': ',
+                    this.props.obj.created_at,
+                    ' ',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null)
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'td',
                     null,
-                    this.props.obj.cmnd
+                    'H\u1EBFt nhu c\u1EA7u'
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'td',
                     null,
-                    this.props.obj.type
+                    '\u0110\xE3 vay th\xE0nh c\xF4ng'
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'td',
                     null,
-                    this.props.obj.type
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'td',
-                    { style: { width: '20%' } },
-                    this.props.obj.more
+                    's\u1EEDa'
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'td',
                     null,
-                    this.props.obj.created_at
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["a" /* Link */],
+                        { className: 'btn btn-primary', to: '/users/edit/' + this.props.obj.id },
+                        'Edit'
+                    )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'td',
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'button',
+                        { className: 'btn btn-danger', onClick: this.handleDelete },
+                        'Delete'
+                    )
                 )
             );
         }

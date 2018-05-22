@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 class UserRow extends Component {
     constructor(props) {
@@ -39,42 +40,30 @@ class UserRow extends Component {
         return (
             <tr>
                 <td>
-                    {this.props.obj.id}
-                </td>
-                <td>
-                    {this.props.obj.name}
-                </td>
-                <td>
-                    {this.props.obj.phone}
-                </td>
-                <td>
-                    {this.props.obj.email}
-                </td>
-                <td>
-                    {this.formatNumber(this.props.obj.money,'.', ',')} VNĐ
-                </td>
-                <td>
-                    {this.props.obj.cmnd}
-                </td>
-                <td>
-                    {this.props.obj.type}
-                </td>
-                <td>
-                    {this.props.obj.type}
-                </td>
-                    <td style={{width:'20%'}}>
-                    {this.props.obj.more}
-                </td>
-                <td>
-                    {this.props.obj.created_at}
-                </td>
+                    <b>ID</b>: {this.props.obj.id} <br/>
+                    <b>Name</b>: {this.props.obj.name} <br/>
+                    <b>Phone</b>:  {this.props.obj.phone} <br/>
+                    <b>Email</b>:  {this.props.obj.email} <br/>
+                    <b>ID Card</b>:  {this.props.obj.cmnd} <br/>
 
-                {/* <td>
-          <Link className='btn btn-primary' to={'/users/edit/' + this.props.obj.id}>Edit</Link>
-        </td>
-        <td>
-          <button className='btn btn-danger' onClick={this.handleDelete}>Delete</button>
-        </td> */}
+                </td>
+                <td>
+                    <b>Loan</b>: {this.formatNumber(this.props.obj.money,'.', ',')} VNĐ <br/>
+                    <b>Type Of Loan </b> : {this.props.obj.type} <br/>
+                    <b>More Info </b> : {this.props.obj.more} <br/>
+                    <b>Company</b>: {this.props.obj.company} <br/>
+                    <b>Created At</b>: {this.props.obj.created_at} <br/>
+                </td>
+                <td>Hết nhu cầu</td>
+                <td>Đã vay thành công</td>
+                {/*<td>sửa</td>*/}
+
+                <td>
+                  <Link className='btn btn-primary' to={'/users/edit/' + this.props.obj.id}>Edit</Link>
+                </td>
+                {/*<td>*/}
+                  {/*<button className='btn btn-danger' onClick={this.handleDelete}>Delete</button>*/}
+                {/*</td>*/}
             </tr>
         )
     }
