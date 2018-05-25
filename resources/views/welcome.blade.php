@@ -7,11 +7,13 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>VayCapToc - Dash Board</title>
         <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+        <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
         <script type="text/javascript">
             window.Laravel = {!! json_encode([
                 'baseUrl' => url('/'),
                 'csrfToken' => csrf_token(),
             ]) !!};
+            apiVCT = 'https://vaycaptoc.com/wp-json/wp/api';
         </script>
     </head>
     <body>

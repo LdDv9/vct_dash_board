@@ -5,6 +5,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::resource('users', 'UserController');
     Route::resource('guest', 'GuestController');
 });
-
+Route::get('/',function () {
+   return view('welcome');
+});
 Route::view('/{any}', 'welcome')
     ->where('any', '.*');

@@ -3,11 +3,13 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import EditGuest from './Guest/EditGuest'
 
 class UserRow extends Component {
     constructor(props) {
-        super(props)
-        this.handleDelete = this.handleDelete.bind(this)
+        super(props);
+        this.handleDelete = this.handleDelete.bind(this);
+        this.formatNumber = this.formatNumber.bind(this)
     }
 
     handleDelete(e) {
@@ -24,7 +26,7 @@ class UserRow extends Component {
                 console.log(error)
             })
     }
-     formatNumber(nStr, decSeperate, groupSeperate) {
+    formatNumber (nStr, decSeperate, groupSeperate)   {
         nStr += '';
         let x = nStr.split(decSeperate);
         let x1 = x[0];
@@ -37,6 +39,7 @@ class UserRow extends Component {
     }
 
     render() {
+        let temp = this.formatNumber(this.props.obj.money,'.', ',');
         return (
             <tr>
                 <td>
@@ -48,18 +51,20 @@ class UserRow extends Component {
 
                 </td>
                 <td>
-                    <b>Loan</b>: {this.formatNumber(this.props.obj.money,'.', ',')} VNĐ <br/>
+                    <b>Loan</b>: {temp} VNĐ <br/>
                     <b>Type Of Loan </b> : {this.props.obj.type} <br/>
                     <b>More Info </b> : {this.props.obj.more} <br/>
                     <b>Company</b>: {this.props.obj.company} <br/>
                     <b>Created At</b>: {this.props.obj.created_at} <br/>
                 </td>
-                <td>Hết nhu cầu</td>
+                <td>
+                    {this.props.obj.note}
+                </td>
                 <td>Đã vay thành công</td>
                 {/*<td>sửa</td>*/}
 
                 <td>
-                  <Link className='btn btn-primary' to={'/users/edit/' + this.props.obj.id}>Edit</Link>
+                    <a className="btn btn-primary" onClick={ () =>{this.props.clickOnRow(this.props.obj)}} href="javascript:void(0)">Edit</a>
                 </td>
                 {/*<td>*/}
                   {/*<button className='btn btn-danger' onClick={this.handleDelete}>Delete</button>*/}
