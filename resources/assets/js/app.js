@@ -11,13 +11,14 @@ import createBrowserHistory from 'history/createBrowserHistory'
 import CreateUser from './components/CreateUser'
 import EditUser from './components/EditUser'
 import UserList from './components/UserList'
+import UserLogin from './components/Auth/UserLogin'
 
-const history = createBrowserHistory()
+const history = createBrowserHistory();
 render (
   <Router history={history}>
     <Switch>
       <Route path='/users/create' component={CreateUser} />
       <Route path='/users/edit/:id' component={EditUser} />
-      <Route path='/' component={UserList} />
+      <Route path='/' component={UserLogin} />
     </Switch>
-  </Router>, document.getElementById('app'))
+  </Router>, document.getElementById('app'));

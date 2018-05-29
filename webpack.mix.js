@@ -12,4 +12,5 @@ let mix = require('laravel-mix');
  */
 
 mix.react('resources/assets/js/app.js', 'public/js')
+    // .js('node_modules/jquery-validation/dist/jquery.validate.min.js', 'public/js')
    // .sass('resources/assets/sass/app.scss');

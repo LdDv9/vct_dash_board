@@ -106,4 +106,6 @@ class UserController extends Controller
         return response()
             ->json(['message' => 'Success: You have deleted the user']);
     }
+
+
 }

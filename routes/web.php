@@ -1,12 +1,12 @@
 <?php
 use Illuminate\Support\Facades\Route;
 //use Symfony\Component\Routing\Route;
-Route::group(['prefix' => 'api'], function () {
-    Route::resource('users', 'UserController');
-    Route::resource('guest', 'GuestController');
-});
+
 Route::get('/',function () {
-   return view('welcome');
+   return view('index');
 });
-Route::view('/{any}', 'welcome')
+Route::get('/dash-board',function () {
+    return view('dash_board');
+});
+Route::view('/{any}', 'index')
     ->where('any', '.*');
