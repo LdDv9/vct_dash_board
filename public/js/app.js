@@ -57,7 +57,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 116);
@@ -13044,9 +13044,8 @@ var UserList = function (_Component) {
         value: function componentDidMount() {
             var _this2 = this;
 
-            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(window.Laravel.baseUrl + '/api/guest').then(function (response) {
-                // console.log(response);
-
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(apiVCT + '/guest-api').then(function (response) {
+                // console.log(response.data);
                 _this2.setState({ users: response.data.data });
             }).catch(function (error) {
                 console.log(error);
@@ -13174,7 +13173,7 @@ var UserList = function (_Component) {
     return UserList;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* unused harmony default export */ var _unused_webpack_default_export = (UserList);
+/* harmony default export */ __webpack_exports__["a"] = (UserList);
 
 /***/ }),
 /* 115 */
@@ -13231,6 +13230,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 var history = __WEBPACK_IMPORTED_MODULE_3_history_createBrowserHistory___default()();
+// render(<UserLogin />, document.getElementById('auth'));
 Object(__WEBPACK_IMPORTED_MODULE_1_react_dom__["render"])(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
   __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Router */],
   { history: history },
@@ -13239,6 +13239,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1_react_dom__["render"])(__WEBPACK_IMPORTED_MOD
     null,
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/users/create', component: __WEBPACK_IMPORTED_MODULE_4__components_CreateUser__["a" /* default */] }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/users/edit/:id', component: __WEBPACK_IMPORTED_MODULE_5__components_EditUser__["a" /* default */] }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/dash-board', component: __WEBPACK_IMPORTED_MODULE_6__components_UserList__["a" /* default */] }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/', component: __WEBPACK_IMPORTED_MODULE_7__components_Auth_UserLogin__["a" /* default */] })
   )
 ), document.getElementById('app'));
@@ -44767,7 +44768,7 @@ var UserList = function (_Component) {
                             var htmlError = '';
                             $.each(errors, function (index, value) {
                                 $.each(errors[index], function (index, value) {
-                                    htmlError += "<span> " + value + "</span> <br/>";
+                                    htmlError += "<span class='label label-danger'> " + value + "</span> <br/>";
                                 });
                             });
                             $('.js-list-error').html(htmlError);
@@ -44775,7 +44776,7 @@ var UserList = function (_Component) {
                         if (response.data.status === 'error') {
                             var _errors = response.data.mess;
                             // let htmlError = '';
-                            $('.js-list-error').html(_errors);
+                            $('.js-list-error').html("<span class='label label-danger'> " + _errors + "</span>");
                         }
                     }).catch(function (error) {
                         console.log(error);
@@ -44810,7 +44811,7 @@ var UserList = function (_Component) {
                     { className: 'row' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'col-md-4 col-md-offset-4' },
+                        { className: 'col-md-4 col-md-offset-4 container-login-form' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'h1',
                             null,

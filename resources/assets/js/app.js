@@ -14,11 +14,13 @@ import UserList from './components/UserList'
 import UserLogin from './components/Auth/UserLogin'
 
 const history = createBrowserHistory();
+// render(<UserLogin />, document.getElementById('auth'));
 render (
   <Router history={history}>
     <Switch>
       <Route path='/users/create' component={CreateUser} />
       <Route path='/users/edit/:id' component={EditUser} />
+      <Route path='/dash-board' component={UserList} />
       <Route path='/' component={UserLogin} />
     </Switch>
   </Router>, document.getElementById('app'));

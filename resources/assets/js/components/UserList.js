@@ -17,10 +17,9 @@ class UserList extends Component {
     }
 
     componentDidMount() {
-        axios.get(window.Laravel.baseUrl + '/api/guest')
+        axios.get(apiVCT + '/guest-api')
             .then(response => {
-                // console.log(response);
-
+                // console.log(response.data);
                 this.setState({users: response.data.data})
             })
             .catch(function (error) {

@@ -16,10 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-//Route::group(['prefix' => 'api'], function () {
-    Route::resource('users', 'UserController');
-    Route::resource('guest', 'GuestController');
+Route::resource('users', 'UserController');
+Route::resource('guest', 'GuestController');
+Route::group(['prefix' => 'dash-board'], function () {
+    Route::post('/user-register', 'RegisterController');
 //    Route::post('user-login','AuthController@userLogin');
 //    Route::match(['get', 'post'], 'user-login', 'AuthController@userLogin');
-//});
+});
 Route::post('/user-login', 'AuthController@userLogin');

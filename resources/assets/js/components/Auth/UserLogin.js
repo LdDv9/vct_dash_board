@@ -79,7 +79,7 @@ class UserList extends Component {
                         let htmlError = '';
                         $.each(errors, function (index, value) {
                             $.each(errors[index], function (index, value) {
-                                htmlError += "<span> "+value+"</span> <br/>";
+                                htmlError += "<span class='label label-danger'> "+value+"</span> <br/>";
                             });
                         });
                         $('.js-list-error').html(htmlError);
@@ -87,7 +87,7 @@ class UserList extends Component {
                     if (response.data.status === 'error') {
                         let errors = response.data.mess;
                         // let htmlError = '';
-                        $('.js-list-error').html(errors);
+                        $('.js-list-error').html("<span class='label label-danger'> "+errors+"</span>");
                     }
                 }).catch(error => {
                     console.log(error)
@@ -113,7 +113,7 @@ class UserList extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-md-4 col-md-offset-4">
+                    <div className="col-md-4 col-md-offset-4 container-login-form">
                         <h1>Authentication User</h1>
 
                         <form  action="" id="js-form-login">
