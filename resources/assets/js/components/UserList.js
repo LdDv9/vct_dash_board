@@ -39,6 +39,20 @@ class UserList extends Component {
         });
     }
 
+    reloadList(obj){
+        let guestId = obj.guestId;
+        let listTemp = this.state.users;
+        listTemp.map((object, key) => {
+            if (guestId === object.id) {
+                object.note = obj.guestNote;
+                object.status = obj.guestStatus;
+            }
+        });
+        this.setState({
+            users:listTemp
+        });
+    }
+
     fetchRows() {
         if (this.state.users instanceof Array) {
             return this.state.users.map((object, i) => {
@@ -71,7 +85,7 @@ class UserList extends Component {
                         {this.fetchRows()}
                         </tbody>
                     </table>
-                    <EditGuest  obj={this.state.dataPopup} />
+                    <EditGuest reloadList={(obj) => this.reloadList(obj)} obj={this.state.dataPopup} />
                 </div>
             </App>
         )

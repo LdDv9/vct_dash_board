@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react';
 import axios from 'axios';
+import {formatNumber} from './Library/FormatNumber'
 import {Link} from 'react-router-dom';
 import EditGuest from './Guest/EditGuest'
 
@@ -9,7 +10,6 @@ class UserRow extends Component {
     constructor(props) {
         super(props);
         this.handleDelete = this.handleDelete.bind(this);
-        this.formatNumber = this.formatNumber.bind(this)
     }
 
     handleDelete(e) {
@@ -26,20 +26,10 @@ class UserRow extends Component {
                 console.log(error)
             })
     }
-    formatNumber (nStr, decSeperate, groupSeperate)   {
-        nStr += '';
-        let x = nStr.split(decSeperate);
-        let x1 = x[0];
-        let x2 = x.length > 1 ? '.' + x[1] : '';
-        let rgx = /(\d+)(\d{3})/;
-        while (rgx.test(x1)) {
-            x1 = x1.replace(rgx, '$1' + groupSeperate + '$2');
-        }
-        return x1 + x2;
-    }
 
     render() {
-        let temp = this.formatNumber(this.props.obj.money,'.', ',');
+        let money = formatNumber(this.props.obj.money,'.', ',');
+        let status = this.props.obj.status ? this.props.obj.status : 'none_contact';
         return (
             <tr>
                 <td>
@@ -51,7 +41,7 @@ class UserRow extends Component {
 
                 </td>
                 <td>
-                    <b>Loan</b>: {temp} VNĐ <br/>
+                    <b>Loan</b>: {money} VNĐ <br/>
                     <b>Type Of Loan </b> : {this.props.obj.type} <br/>
                     <b>More Info </b> : {this.props.obj.more} <br/>
                     <b>Company</b>: {this.props.obj.company} <br/>
@@ -60,7 +50,11 @@ class UserRow extends Component {
                 <td>
                     {this.props.obj.note}
                 </td>
-                <td>Đã vay thành công</td>
+                <td>
+                    {status === 'success' ? <label className="label label-success">Thành công</label>: ''}
+                    {status === 'fail' ? <label className="label label-danger">Thất Bại</label>: ''}
+                    {status === 'none_contact' ? <label className="label label-info">Chưa Liên Lạc</label>: ''}
+                </td>
                 {/*<td>sửa</td>*/}
 
                 <td>

@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react'
 import UserList from '../UserList'
+import {formatNumber} from  '../Library/FormatNumber'
 import axios from 'axios'
 import 'popper.js'
 import 'bootstrap'
@@ -12,7 +13,7 @@ class EditGuest extends Component {
         this.state = {
             guestNote: '',
             guestStatus: 'none_contact'
-        }
+        };
         this.handleChangeName = this.handleChangeName.bind(this);
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
         this.handleChangePassword = this.handleChangePassword.bind(this);
@@ -29,7 +30,8 @@ class EditGuest extends Component {
 
     componentWillReceiveProps(nextProps){
         this.setState({
-            guestNote:nextProps.obj.note
+            guestNote:nextProps.obj.note,
+            guestStatus: nextProps.obj.status
         });
     }
 
@@ -83,7 +85,15 @@ class EditGuest extends Component {
             let resultElement = $('#result');
             resultElement.show();
             if (response.data.status == 'success') {
+                let objChange = {
+                    guestNote,
+                    guestStatus,
+                    guestId
+                };
                 resultElement.text('Success: ' + response.data.message).removeClass('label-danger').addClass('label-success');
+                setTimeout(()=>{
+                    this.props.reloadList(objChange);
+                },1000);
             } else {
                 resultElement.text('Error: '+ response.data.message).removeClass('label-success').addClass('label-danger');
             }
@@ -133,7 +143,7 @@ class EditGuest extends Component {
                                         <label htmlFor="guest-name">Email:  </label><span> {this.props.obj.email}</span><br/>
                                     </div>
                                     <div className="col-md-6">
-                                        <label htmlFor="guest-name">Loan:  </label><span> {this.props.obj.money}</span><br/>
+                                        <label htmlFor="guest-name">Loan:  </label><span> { formatNumber(this.props.obj.money,'.', ',')} VNĐ</span><br/>
                                         <label htmlFor="guest-name">Type of Loan:  </label><span> {this.props.obj.type}</span><br/>
                                         <label htmlFor="guest-name">Company:  </label><span> {this.props.obj.company}</span><br/>
                                     </div>
