@@ -1,11 +1,11 @@
 // resources\assets\js\app.js
 
 import React from 'react'
-import { render } from 'react-dom'
+import {render} from 'react-dom'
 import {
-  Router,
-  Route,
-  Switch
+    Router,
+    Route,
+    Switch
 } from 'react-router-dom'
 import createBrowserHistory from 'history/createBrowserHistory'
 import CreateUser from './components/CreateUser'
@@ -15,12 +15,13 @@ import UserLogin from './components/Auth/UserLogin'
 
 const history = createBrowserHistory();
 // render(<UserLogin />, document.getElementById('auth'));
-render (
-  <Router history={history}>
-    <Switch>
-      <Route path='/users/create' component={CreateUser} />
-      <Route path='/users/edit/:id' component={EditUser} />
-      <Route path='/dash-board' component={UserList} />
-      <Route path='/' component={UserLogin} />
-    </Switch>
-  </Router>, document.getElementById('app'));
+render(
+    <Router history={history}>
+        <Switch>
+            <Route path='/dash-board/users/create' component={CreateUser}/>
+            <Route path='/dash-board' component={UserList}/>
+            <Route path='/users/edit/:id' component={EditUser}/>
+            <Route path='/' component={UserLogin}/>
+
+        </Switch>
+    </Router>, document.getElementById('app'));

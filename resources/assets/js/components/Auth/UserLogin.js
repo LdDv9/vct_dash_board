@@ -68,6 +68,7 @@ class UserList extends Component {
                 let dataSend = new FormData();
                 dataSend.append('userMail',userMail);
                 dataSend.append('userPassword',userPassword);
+                // dataSend.append('_token',$('meta[name="csrf-token"]').attr('content'));
                 axios({
                     method: 'post',
                     url: url,
@@ -88,6 +89,9 @@ class UserList extends Component {
                         let errors = response.data.mess;
                         // let htmlError = '';
                         $('.js-list-error').html("<span class='label label-danger'> "+errors+"</span>");
+                    }
+                    if (response.data.status === 'success') {
+                        $('.js-list-error').html("<span class='label label-success'> Login Success</span>");
                     }
                 }).catch(error => {
                     console.log(error)

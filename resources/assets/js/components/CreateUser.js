@@ -39,16 +39,17 @@ class CreateUser extends Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault()
-        let url = window.Laravel.baseUrl + '/api/users'
+        e.preventDefault();
+        let url = window.Laravel.baseUrl + '/api/users';
         const data = {
             name: this.state.name,
             email: this.state.email,
             password: this.state.password
-        }
+        };
         axios.post(url, data)
             .then(response => {
-                this.props.history.push('/users')
+                console.log(response);
+                // this.props.history.push('/users')
             })
             .catch(function (error) {
                 console.log(error)
@@ -58,7 +59,6 @@ class CreateUser extends Component {
     render() {
         return (
             <App>
-                <EditGuest/>
                 <h1>Create An User</h1>
                 <form onSubmit={this.handleSubmit}>
                     <div className='form-group'>

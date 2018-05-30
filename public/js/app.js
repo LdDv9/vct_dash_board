@@ -13232,16 +13232,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var history = __WEBPACK_IMPORTED_MODULE_3_history_createBrowserHistory___default()();
 // render(<UserLogin />, document.getElementById('auth'));
 Object(__WEBPACK_IMPORTED_MODULE_1_react_dom__["render"])(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-  __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Router */],
-  { history: history },
-  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["d" /* Switch */],
-    null,
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/users/create', component: __WEBPACK_IMPORTED_MODULE_4__components_CreateUser__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/users/edit/:id', component: __WEBPACK_IMPORTED_MODULE_5__components_EditUser__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/dash-board', component: __WEBPACK_IMPORTED_MODULE_6__components_UserList__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/', component: __WEBPACK_IMPORTED_MODULE_7__components_Auth_UserLogin__["a" /* default */] })
-  )
+    __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Router */],
+    { history: history },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["d" /* Switch */],
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/dash-board/users/create', component: __WEBPACK_IMPORTED_MODULE_4__components_CreateUser__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/dash-board', component: __WEBPACK_IMPORTED_MODULE_6__components_UserList__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/users/edit/:id', component: __WEBPACK_IMPORTED_MODULE_5__components_EditUser__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/', component: __WEBPACK_IMPORTED_MODULE_7__components_Auth_UserLogin__["a" /* default */] })
+    )
 ), document.getElementById('app'));
 
 /***/ }),
@@ -27973,8 +27973,6 @@ var CreateUser = function (_Component) {
     }, {
         key: 'handleSubmit',
         value: function handleSubmit(e) {
-            var _this2 = this;
-
             e.preventDefault();
             var url = window.Laravel.baseUrl + '/api/users';
             var data = {
@@ -27983,7 +27981,8 @@ var CreateUser = function (_Component) {
                 password: this.state.password
             };
             __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post(url, data).then(function (response) {
-                _this2.props.history.push('/users');
+                console.log(response);
+                // this.props.history.push('/users')
             }).catch(function (error) {
                 console.log(error);
             });
@@ -27994,7 +27993,6 @@ var CreateUser = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1__App__["a" /* default */],
                 null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Guest_EditGuest__["a" /* default */], null),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h1',
                     null,
@@ -44757,6 +44755,7 @@ var UserList = function (_Component) {
                     var dataSend = new FormData();
                     dataSend.append('userMail', userMail);
                     dataSend.append('userPassword', userPassword);
+                    // dataSend.append('_token',$('meta[name="csrf-token"]').attr('content'));
                     __WEBPACK_IMPORTED_MODULE_1_axios___default()({
                         method: 'post',
                         url: url,
@@ -44777,6 +44776,9 @@ var UserList = function (_Component) {
                             var _errors = response.data.mess;
                             // let htmlError = '';
                             $('.js-list-error').html("<span class='label label-danger'> " + _errors + "</span>");
+                        }
+                        if (response.data.status === 'success') {
+                            $('.js-list-error').html("<span class='label label-success'> Login Success</span>");
                         }
                     }).catch(function (error) {
                         console.log(error);

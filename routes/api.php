@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,11 +16,13 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::resource('users', 'UserController');
-Route::resource('guest', 'GuestController');
-Route::group(['prefix' => 'dash-board'], function () {
-    Route::post('/user-register', 'RegisterController');
+//Route::group(['middleware' => ['web']], function () {
+    Route::resource('users', 'UserController');
+    Route::resource('guest', 'GuestController');
+    Route::group(['prefix' => 'dash-board'], function () {
+
+//    Route::post('/user-register', 'Auth/RegisterController');
 //    Route::post('user-login','AuthController@userLogin');
 //    Route::match(['get', 'post'], 'user-login', 'AuthController@userLogin');
-});
-Route::post('/user-login', 'AuthController@userLogin');
+    });
+//});
