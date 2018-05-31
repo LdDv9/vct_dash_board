@@ -22,7 +22,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::group(['prefix' => 'dash-board'], function () {
 
 //    Route::post('/user-register', 'Auth/RegisterController');
-//    Route::post('user-login','AuthController@userLogin');
 //    Route::match(['get', 'post'], 'user-login', 'AuthController@userLogin');
     });
 //});

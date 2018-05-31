@@ -20,7 +20,7 @@ render(
         <Switch>
             <Route path='/dash-board/users/create' component={CreateUser}/>
             <Route path='/dash-board' component={UserList}/>
-            <Route path='/users/edit/:id' component={EditUser}/>
+            {/*<Route path='/users/edit/:id' component={EditUser}/>*/}
             <Route path='/' component={UserLogin}/>
 
         </Switch>

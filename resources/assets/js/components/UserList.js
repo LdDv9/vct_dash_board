@@ -66,7 +66,7 @@ class UserList extends Component {
             <App>
                 <h1>List guests register</h1>
                 <div className='clearfix'>
-                    <Link className='btn btn-success pull-right' to='/users/create'>Add User</Link>
+                    {/*<Link className='btn btn-success pull-right' to='/users/create'>Add User</Link>*/}
                 </div>
                 <br/>
                 <div className='table-responsive'>

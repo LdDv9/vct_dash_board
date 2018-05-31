@@ -35,7 +35,7 @@ class UserRow extends Component {
                 <td>
                     <b>ID</b>: {this.props.obj.id} <br/>
                     <b>Name</b>: {this.props.obj.name} <br/>
-                    <b>Phone</b>:  {this.props.obj.phone} <br/>
+                    <b>Phone</b>: <a href={'tel:'+this.props.obj.phone}>{this.props.obj.phone}</a>  <br/>
                     <b>Email</b>:  {this.props.obj.email} <br/>
                     <b>ID Card</b>:  {this.props.obj.cmnd} <br/>
 

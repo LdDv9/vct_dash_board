@@ -12,6 +12,7 @@
         -moz-border-radius: 10px;
         border-radius: 10px;
         box-shadow: 1px 2px 2px;
+        padding-bottom: 10px;
     }
 </style>
 @extends('master')

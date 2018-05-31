@@ -15,8 +15,6 @@ class AuthController extends Controller
             'password'=>$request->userPassword,
         ];
         if(Auth::guard()->attempt($data)){
-//            AuthenticatesUsers::
-//            $authenicateUsers = new AuthenticatesUsers();
             return response()->json([
                 'status' => 'success'
             ]);
@@ -24,8 +22,24 @@ class AuthController extends Controller
         }else{
             return response()->json([
                 'status' => 'error',
-                'mess'   => 'Incorrect email address or password'
+                'mess'   => ' Bitch, incorrect email address or password'
 
+            ]);
+        }
+    }
+
+    public function userLogout () {
+
+        if (Auth::check()) {
+            Auth::logout();
+            return response()->json([
+                'status' => 'success'
+            ]);
+//            return redirect('/');
+        } else {
+//            return redirect('/');
+            return response()->json([
+                'status' => 'error'
             ]);
         }
     }

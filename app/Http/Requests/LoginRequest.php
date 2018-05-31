@@ -35,13 +35,13 @@ class LoginRequest extends FormRequest
     /**
      * @return array
      */
-//    public function messages()
-//    {
-//        return [
-//            'required'=>':attribute Không được để trống',
-//            'max'=>':attribute Không được quá :max ký tự',
-//        ];
-//    }
+    public function messages()
+    {
+        return [
+            'required'=>'Bitch :attribute is required',
+            'email'=>'Bitch :attribute email is not valid',
+        ];
+    }
 
     /**
      * @param Validator $validator

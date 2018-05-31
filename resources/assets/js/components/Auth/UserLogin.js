@@ -2,8 +2,10 @@
 
 import React, {Component} from 'react'
 import axios from 'axios'
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 class UserList extends Component {
     constructor(props) {
         super(props);
@@ -80,18 +82,27 @@ class UserList extends Component {
                         let htmlError = '';
                         $.each(errors, function (index, value) {
                             $.each(errors[index], function (index, value) {
-                                htmlError += "<span class='label label-danger'> "+value+"</span> <br/>";
+                                // htmlError += "<span class='label label-danger'> "+value+"</span> <br/>";
+                                toast.error(value, {
+                                    position: toast.POSITION.TOP_RIGHT,
+                                    className: 'toast-custom'
+                                });
                             });
                         });
+
                         $('.js-list-error').html(htmlError);
                     }
                     if (response.data.status === 'error') {
+
                         let errors = response.data.mess;
                         // let htmlError = '';
-                        $('.js-list-error').html("<span class='label label-danger'> "+errors+"</span>");
+                        toast.error(errors, {
+                            position: toast.POSITION.TOP_RIGHT,
+                            className: 'toast-custom'
+                        });
                     }
                     if (response.data.status === 'success') {
-                        $('.js-list-error').html("<span class='label label-success'> Login Success</span>");
+                        window.location.href = window.Laravel.baseUrl + '/dash-board';
                     }
                 }).catch(error => {
                     console.log(error)
@@ -134,6 +145,7 @@ class UserList extends Component {
                             </div>
                         </form>
                         <div className="js-list-error text-danger"> </div>
+                        <ToastContainer/>
                     </div>
                 </div>
             </div>
